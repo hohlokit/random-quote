@@ -23,7 +23,7 @@ const copiedHistory = ref(props.quotesHistory)
 
 watch(props.quotesHistory, () => {
   copiedHistory.value = props.quotesHistory
-    .slice(0, props.quotesHistory.length - 1)
+    .slice(0, props.quotesHistory.length )
     .reverse()
 })
 </script>

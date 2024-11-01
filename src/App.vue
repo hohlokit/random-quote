@@ -5,7 +5,7 @@ import Quote from './modules/Quote.vue'
 import { watch, reactive } from 'vue'
 
 const quotesHistory = reactive(
-  JSON.parse(localStorage.getItem('quotesHistory') || [])
+  JSON.parse(localStorage.getItem('quotesHistory'))
 )
 
 function setQuotesHisory(newValue) {
