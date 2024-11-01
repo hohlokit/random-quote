@@ -5,7 +5,6 @@ import Quote from './modules/Quote.vue'
 
 <template>
   <Quote />
-  <History />
 </template>
 
 <style scoped></style>
