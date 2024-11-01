@@ -1,5 +1,6 @@
 <script setup>
-import Quote from './components/organisms/Quote.vue'
+import History from './modules/History.vue'
+import Quote from './modules/Quote.vue'
 </script>
 
 <template>
