@@ -40,7 +40,6 @@ async function getQuote() {
 
     quotesHistory.push({ quote: quote.value, author: author.value })
     localStorage.setItem('quotesHistory', JSON.stringify(quotesHistory))
-    
   } catch (err) {
     console.log(err)
 
@@ -108,13 +107,12 @@ getQuote()
   display: flex;
   flex-direction: column;
   justify-content: start;
+
   gap: 32px;
 
   z-index: 10;
   position: relative;
   min-height: 300px;
-  width: 720px;
-  max-width: min(100%, 720px);
 }
 
 .triangles {
@@ -130,6 +128,9 @@ getQuote()
   z-index: 5;
 }
 blockquote {
+  width: 100%;
+  text-align: center;
+
   margin: 0;
   font-size: 24px;
 
@@ -153,6 +154,9 @@ blockquote:active > p {
   }
 }
 @media (max-width: 480px) {
+  blockquote {
+    font-size: 16px;
+  }
   .overlay {
     right: 24px;
     bottom: 24px;
