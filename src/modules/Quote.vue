@@ -1,11 +1,19 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, toRaw } from 'vue'
 
 import { Card, Button, Triangle, Loader, Input } from '../components'
 
 import { getRandomQuote } from '../api/getRandomQuote'
 
-const props = defineProps(['category'])
+const props = defineProps({
+  quotesHistory: {
+    default: []
+  },
+  setQuotesHistory: {
+    type: Function,
+    required: true
+  }
+})
 
 const quote = ref('')
 const author = ref('')
@@ -35,11 +43,7 @@ async function getQuote() {
     quote.value = data.quote
     author.value = data.author
 
-    const quotesHistory =
-      JSON.parse(localStorage.getItem('quotesHistory')) || []
-
-    quotesHistory.push({ quote: quote.value, author: author.value })
-    localStorage.setItem('quotesHistory', JSON.stringify(quotesHistory))
+    props.setQuotesHistory({ quote: quote.value, author: author.value })
   } catch (err) {
     console.log(err)
 
@@ -110,6 +114,7 @@ getQuote()
 
   gap: 32px;
 
+  min-width: 600px;
   z-index: 10;
   position: relative;
   min-height: 300px;
@@ -146,6 +151,7 @@ blockquote:active > p {
 
 @media (max-width: 768px) {
   .wrapper {
+    min-width: unset;
     width: 100%;
     gap: 0;
   }

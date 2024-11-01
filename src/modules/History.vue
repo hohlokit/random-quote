@@ -1,8 +1,8 @@
 <template>
-  <Card v-if="quotesHistory?.length" class="history">
+  <Card v-if="copiedHistory.length > 1" class="history">
     <h2>Quotes history</h2>
     <ul>
-      <li v-for="{ quote } in quotesHistory">
+      <li v-for="({ quote }, index) in copiedHistory" :key="index">
         <span>{{ quote }}</span>
       </li>
     </ul>
@@ -10,9 +10,22 @@
 </template>
 
 <script setup>
+import { ref, watch } from 'vue'
 import Card from '../components/Card.vue'
 
-const quotesHistory = JSON.parse(localStorage.getItem('quotesHistory')) || []
+const props = defineProps({
+  quotesHistory: {
+    default: []
+  }
+})
+
+const copiedHistory = ref(props.quotesHistory)
+
+watch(props.quotesHistory, () => {
+  copiedHistory.value = props.quotesHistory
+    .slice(0, props.quotesHistory.length - 1)
+    .reverse()
+})
 </script>
 
 <style scoped>
