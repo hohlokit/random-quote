@@ -10,5 +10,13 @@
   padding: 48px;
 
   border-radius: 6px;
+
+  position: relative;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 24px;
+  }
 }
 </style>

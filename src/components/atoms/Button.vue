@@ -8,7 +8,7 @@
 import { computed } from 'vue'
 
 const buttonClass = computed(() => {
-  return `btn btn-${props.variant}`
+  return `btn ${props.variant}`
 })
 </script>
 
