@@ -1,8 +1,8 @@
 <template>
-  <Card class="history">
+  <Card v-if="quotesHistory?.length" class="history">
     <h2>Quotes history</h2>
     <ul>
-      <li v-for="{ author, quote } in quotesHistory">
+      <li v-for="{ quote } in quotesHistory">
         <span>{{ quote }}</span>
       </li>
     </ul>
